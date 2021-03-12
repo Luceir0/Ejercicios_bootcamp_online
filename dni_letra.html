@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DNI</title>
+
+    <script>
+
+	function validate() {
+		let inputNumber;
+		let inputLetter;
+		const form = document.querySelector('form');
+		const letters = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+
+  		inputNumber = document.getElementsByName("number")[0].value;
+  		inputLetter = document.getElementsByName("letter")[0].value;
+
+
+ 		if(isNaN(inputNumber)) {
+			alert("Lo siento, no has introducido un número en el campo correspondiente");
+			form.reset();
+			
+		}else if(inputNumber.length === 0 || inputNumber.length < 8){
+			alert("Para continuar, has de introducir tu número de DNI");
+			form.reset();
+			
+		}else if(inputLetter.length === 0){
+			alert("Recuerda introducir la letra de tu DNI");
+			form.reset();
+			
+		}else if(isNaN(inputLetter) === false){
+			alert("Lo siento, no has introducido una letra en el campo correspondiente");
+			form.reset();
+		}
+
+		let arrayIndex = inputNumber%23;
+		let result = letters[arrayIndex];
+
+		if((inputNumber.length != 0) && (inputLetter.length != 0)){
+
+			if(inputLetter.toUpperCase() != result){
+				document.getElementById("message").style.color = "#F2022E";
+				document.getElementById("message").innerHTML = "Su letra no es la correcta";
+			}else{
+				document.getElementById("message").style.color = "#5B8C17";
+				document.getElementById("message").innerHTML = "Su letra es correcta";
+			}
+		
+  		document.getElementById("response").innerHTML = result;
+
+		}
+	}
+
+	</script>
+
+	<style>
+
+		body{
+			background-color: #C7C9D1; 
+		}
+
+		input:invalid {
+			border-color: #ce0018;
+		}
+
+		input:valid {
+			border-color: #82c59c;
+		}
+
+		h1,h3{
+			margin-top: 70px;
+			text-align: center;
+			font-size: 45px;
+		}
+
+	</style>
+
+</head>
+
+<body>
+    <form action="#" onsubmit="validate();return false">
+ 		<fieldset>
+			<legend>DNI</legend>
+        	<input type="text" name="number" id="dni" placeholder="Escriba aquí el nº:" maxlength="8" size="15">
+        	<input type="text" name="letter" id="dni" placeholder="Y aquí, su letra:" maxlength="1" size="10">
+        	<input type="submit" value="Validar" id="btn" language="JavaScript">
+        </fieldset>
+        <h3 id="message"></h3>
+        <h1 id="response"></h1>
+    </form>
+
+
+</body>
+
+</html>
+
