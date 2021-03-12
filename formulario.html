@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+ 		<meta charset="UTF-8">
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<title>Formulario</title>
+ 		<style>
+
+ 			body {
+ 			width: 80%;
+ 			margin: auto;
+ 			padding: 2%;
+ 			}
+
+ 			button {
+ 			text-align: center;
+ 			width: 100px;
+ 			height: 20px;
+ 			color: black;
+ 			margin: 2px;
+ 			}
+
+ 			#jsButton {
+ 			text-align: center;
+ 			width: 100px;
+ 			height: 40px;
+ 			background-color: pink;
+ 			border: outset 1px;
+ 			border-radius: 5px;
+ 			}
+
+ 			h1 {
+ 			color: blue;
+ 			text-shadow: 1px 1px 2px yellow;
+ 			text-align: center;
+ 			}
+
+ 			legend {
+ 			color: white;
+ 			background-color: red;
+ 			}
+
+ 			fieldset {
+ 			background-color: aqua;
+ 			border: outset 1px;
+ 			border-radius: 5px;
+ 			}
+
+ 			input {
+ 			background-color: yellow;
+ 			border-radius: 5px;
+ 			border-style:inset;
+ 			border-color: lightgray;
+ 			}
+
+ 		</style>
+
+		<script>
+
+ 			function mostrarValoracion(){
+ 				let data1 = document.getElementsByName("valoracion")[0].value;
+
+ 				if(data1 == 1){
+ 					alert("Has valorado con " + data1 + " punto");
+ 				} else {
+ 					alert("Has valorado con " + data1 + " puntos");
+ 				}
+ 			}
+
+ 			function mostrarCuenta(){
+ 				let pais = document.getElementsByName("pais")[0].placeholder;
+ 				let iban = document.getElementsByName("iban")[0].value;
+ 				let entidad = document.getElementsByName("entidad")[0].value;
+ 				let sucursal = document.getElementsByName("sucursal")[0].value;
+ 				let dc = document.getElementsByName("dc")[0].value;
+ 				let cuenta = document.getElementsByName("cuenta")[0].value;
+
+ 				alert("Le informamos de que su cuenta bancaria es: " + pais + iban + "-" + entidad + "-" + sucursal + "-" + dc + "-" + cuenta);
+ 			}
+
+ 			function mostrarDiaSemana(){
+ 				let fecha = document.getElementsByName("fecha")[0].valueAsDate;
+ 				let dia = fecha.getDay();
+ 				let weekDays = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+ 				alert("El día seleccionado en el elemento 'fecha' es un: " + weekDays[dia]);
+ 			}
+
+ 		</script>
+	</head>
+	<body>
+ 		<header>
+ 			<h1>Formulario Información Alta Telefónica</h1>
+ 		</header>
+ 		<main>
+
+ 			<form action="" method="post">
+ 				<fieldset>
+ 				<legend>Datos Personales</legend>
+ 					Nombre: <input type="text" name="nombre" maxlength="30" required/><br/>
+ 					Apellidos: <input type="text" name="apellidos" maxlength="60" required/><br/>
+ 					Dirección: <input type="text" name="direccion" maxlength="60" required/><br/>
+ 					Código Postal: <input type="text" name="codigoPostal" maxlength="30" pattern="[0-9]{5}" required/><br/>
+ 					Localidad: <input type="text" name="localidad" required/>
+ 				</fieldset>
+ 			<br/>
+ 				<fieldset>
+ 				<legend>Tipo de Contratación</legend>
+ 					<label><input type="radio" name="contratacion" value="nueva" checked="checked"/>Nueva Contratación</label>
+ 					<label><input type="radio" name="contratacion" value="portabilidad"/>Portabilidad</label>
+ 					<label><input type="radio" name="contratacion" value="cambio"/>Cambio de Contrato</label>
+ 			<br/>
+ 			<br/>
+ 				<span>Elija la compañía actual: </span>
+ 				<select name="compActual">
+ 					<option value="movistar">Movistar</option>
+ 					<option value="orange">Orange</option>
+ 					<option value="vodafone">Vodafone</option>
+ 					<option value="yoigo">Yoigo</option>
+ 					<option value="ninguna">No tengo ninguna compañía</option>
+ 				</select>
+
+ 			&nbsp;&nbsp;&nbsp;&nbsp;
+
+ 				<span>En caso de portabilidad, elija la nueva compañía: </span>
+ 				<select name="compNueva">
+ 					<option value="movistar">Movistar</option>
+ 					<option value="orange">Orange</option>
+ 					<option value="vodafone">Vodafone</option>
+ 					<option value="yoigo">Yoigo</option>
+ 					<option value="noAplica">No aplica</option>
+ 				</select>
+ 				</fieldset>
+ 			<br/>
+ 				<fieldset>
+ 				<legend>Datos Bancarios</legend>
+ 					País: <input type="text" name="pais" maxlength="30" placeholder="ES" readonly/> (Solo válido ES)<br/>
+ 					Control IBAN: <input type="text" name="iban" maxlength="30" placeholder="XX" pattern="[0-9]{2}" required/> (Dos dígitos)<br/>
+ 					Entidad: <input type="text" name="entidad" maxlength="30" placeholder="XXXX" pattern="[0-9]{4}" required/> (Cuatro dígitos)<br/>
+ 					Sucursal: <input type="text" name="sucursal" maxlength="30" placeholder="XXXX" pattern="[0-9]{4}" required/> (Cuatro dígitos)<br/>
+ 					DC: <input type="text" name="dc" maxlength="30" placeholder="XX" pattern="[0-9]{2}" required/> (Dos dígitos)<br/>
+ 					Cuenta: <input type="text" name="cuenta" maxlength="30" placeholder="XXXXXXXXXX" pattern="[0-9]{10}" required/> (Diez dígitos)
+ 				</fieldset>
+ 			<br/>
+ 				<fieldset>
+ 				<legend>Datos Estadísticos - ¿Cómo nos conoció?</legend>
+ 					<label><input type="checkbox" name="conocio" value="television"/> A través de la TV</label><br/>
+ 					<label><input type="checkbox" name="conocio" value="radio"/> A través de la radio</label><br/>
+ 					<label><input type="checkbox" name="conocio" value="internet"/> A través de internet</label><br/>
+ 					<label><input type="checkbox" name="conocio" value="otros"/> Otros</label><br/>
+ 			<br/>
+ 					<input type="range" name="valoracion" min="1" max="5" required/> Valoración [1-5]<br/>
+ 			<br/>
+ 					Fecha de la Encuesta: <input type="date" name="fecha" value="2019-01-01" required/>
+ 				</fieldset>
+
+ 				<button type="submit" value="enviar">Enviar Datos</button>
+ 				<button type="reset" value="borrar">Borrar Datos</button>
+ 			<br/>
+ 				<button type="button" id="jsButton" onclick="mostrarValoracion();"value="valoracion">Mostrar Valoración</button>
+ 				<button type="button" id="jsButton" onclick="mostrarCuenta();"value="cuenta">Mostrar Cuenta</button>
+ 				<button type="button" id="jsButton" onclick="mostrarDiaSemana();"value="diaSemana">Mostrar Día Semana</button>
+ 			</form>
+ 			
+ 		</main>
+	</body>
+</html>
